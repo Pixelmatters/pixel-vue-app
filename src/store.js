@@ -17,6 +17,12 @@ export default new Vuex.Store({
       const response = await fetch('https://jsonplaceholder.typicode.com/posts')
       const posts = await response.json()
       context.commit('setPosts', posts)
+      return posts
+    }
+  },
+  getters: {
+    getPostById: (state) => (id) => {
+      return state.posts.find(todo => todo.id === id)
     }
   }
 })
