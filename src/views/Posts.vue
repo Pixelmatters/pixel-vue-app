@@ -1,12 +1,19 @@
 <template>
-  <div>Posts page</div>
+  <div>
+    <PostsList :posts="posts"/>
+  </div>
 </template>
 
 <script>
 import { mapState, mapActions } from "vuex";
+import PostsList from "@/components/PostsList.vue";
 
 export default {
   name: "Posts",
+
+  components: {
+    PostsList
+  },
 
   computed: {
     ...mapState(["posts"])
