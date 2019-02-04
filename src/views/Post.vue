@@ -2,6 +2,16 @@
   <div>
     <h1>{{ post.title }}</h1>
     <p>{{ post.body }}</p>
+    <div>
+      <h2>Comments</h2>
+      <div v-for="comment in comments" :key="comment.id">
+        <h4>
+          {{ comment.name }}
+          <small>{{ comment.email }}</small>
+        </h4>
+        <p>{{ comment.body }}</p>
+      </div>
+    </div>
   </div>
 </template>
 
