@@ -13,7 +13,8 @@ export default {
 
   data() {
     return {
-      post: {}
+      post: {},
+      comments: []
     };
   },
 
@@ -27,10 +28,20 @@ export default {
       await this.getPosts();
     }
     this.post = this.$store.getters.getPostById(postId);
+    this.fetchComments();
   },
 
   methods: {
-    ...mapActions(["getPosts"])
+    ...mapActions(["getPosts"]),
+
+    async fetchComments() {
+      const { postId } = this.$route.params;
+      const response = await fetch(
+        `https://jsonplaceholder.typicode.com/comments?postId=${postId}`
+      );
+      const comments = await response.json();
+      this.comments = comments;
+    }
   }
 };
 </script>
