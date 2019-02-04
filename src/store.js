@@ -8,7 +8,9 @@ export default new Vuex.Store({
     posts: []
   },
   mutations: {
-
+    setPosts(state, payload) {
+      state.posts = payload
+    }
   },
   actions: {
     async getPosts(context) {
